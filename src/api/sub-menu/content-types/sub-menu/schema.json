@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sub_menus",
+  "info": {
+    "singularName": "sub-menu",
+    "pluralName": "sub-menus",
+    "displayName": "SubMenu"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "menu": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::menu.menu",
+      "inversedBy": "sub_menus"
+    }
+  }
+}
