@@ -35,6 +35,12 @@
     },
     "URL": {
       "type": "string"
+    },
+    "section": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::section.section",
+      "inversedBy": "section_items"
     }
   }
 }

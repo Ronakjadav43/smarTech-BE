@@ -497,6 +497,7 @@ export interface ApiSectionItemSectionItem extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    section: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
     subTitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -527,8 +528,8 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    section_item: Schema.Attribute.Relation<
-      'oneToOne',
+    section_items: Schema.Attribute.Relation<
+      'oneToMany',
       'api::section-item.section-item'
     >;
     title: Schema.Attribute.String;
