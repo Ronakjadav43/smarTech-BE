@@ -496,8 +496,11 @@ export interface ApiSectionItemSectionItem extends Struct.CollectionTypeSchema {
       'api::section-item.section-item'
     > &
       Schema.Attribute.Private;
+    multipleMedia: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    section: Schema.Attribute.Relation<'manyToOne', 'api::section.section'>;
     subTitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
