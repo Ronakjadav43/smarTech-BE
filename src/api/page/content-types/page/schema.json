@@ -17,10 +17,11 @@
     "slug": {
       "type": "string"
     },
-    "section": {
+    "sections": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::section.section"
+      "relation": "oneToMany",
+      "target": "api::section.section",
+      "mappedBy": "page"
     },
     "ogImage": {
       "type": "media",

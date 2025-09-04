@@ -23,6 +23,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::type.type"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "sections"
     }
   }
 }

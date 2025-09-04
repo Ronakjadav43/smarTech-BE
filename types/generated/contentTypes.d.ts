@@ -461,7 +461,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     ogTitle: Schema.Attribute.String;
     ogType: Schema.Attribute.Enumeration<['one']>;
     publishedAt: Schema.Attribute.DateTime;
-    section: Schema.Attribute.Relation<'oneToOne', 'api::section.section'>;
+    sections: Schema.Attribute.Relation<'oneToMany', 'api::section.section'>;
     slug: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -501,6 +501,7 @@ export interface ApiSectionItemSectionItem extends Struct.CollectionTypeSchema {
       true
     >;
     publishedAt: Schema.Attribute.DateTime;
+    sub_items: Schema.Attribute.Relation<'oneToMany', 'api::sub-item.sub-item'>;
     subTitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -530,6 +531,7 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
       'api::section.section'
     > &
       Schema.Attribute.Private;
+    page: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>;
     publishedAt: Schema.Attribute.DateTime;
     section_items: Schema.Attribute.Relation<
       'oneToMany',
@@ -540,6 +542,43 @@ export interface ApiSectionSection extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSubItemSubItem extends Struct.CollectionTypeSchema {
+  collectionName: 'sub_items';
+  info: {
+    displayName: 'SubItem';
+    pluralName: 'sub-items';
+    singularName: 'sub-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    details: Schema.Attribute.RichText;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sub-item.sub-item'
+    > &
+      Schema.Attribute.Private;
+    multipleMedia: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    subTitle: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    URL: Schema.Attribute.String;
   };
 }
 
@@ -1113,6 +1152,7 @@ declare module '@strapi/strapi' {
       'api::page.page': ApiPagePage;
       'api::section-item.section-item': ApiSectionItemSectionItem;
       'api::section.section': ApiSectionSection;
+      'api::sub-item.sub-item': ApiSubItemSubItem;
       'api::sub-menu.sub-menu': ApiSubMenuSubMenu;
       'api::type.type': ApiTypeType;
       'plugin::content-releases.release': PluginContentReleasesRelease;

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "section_items",
+  "collectionName": "sub_items",
   "info": {
-    "singularName": "section-item",
-    "pluralName": "section-items",
-    "displayName": "SectionItem"
+    "singularName": "sub-item",
+    "pluralName": "sub-items",
+    "displayName": "SubItem"
   },
   "options": {
     "draftAndPublish": true
@@ -25,16 +25,13 @@
     },
     "image": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ]
-    },
-    "URL": {
-      "type": "string"
     },
     "multipleMedia": {
       "type": "media",
@@ -46,10 +43,8 @@
         "audios"
       ]
     },
-    "sub_items": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::sub-item.sub-item"
+    "URL": {
+      "type": "string"
     }
   }
 }
