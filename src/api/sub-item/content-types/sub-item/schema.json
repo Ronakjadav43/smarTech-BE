@@ -45,6 +45,9 @@
     },
     "URL": {
       "type": "string"
+    },
+    "price": {
+      "type": "integer"
     }
   }
 }

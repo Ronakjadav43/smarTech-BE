@@ -572,6 +572,7 @@ export interface ApiSubItemSubItem extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    price: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     subTitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
