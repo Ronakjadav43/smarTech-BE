@@ -50,6 +50,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::sub-item.sub-item"
+    },
+    "list": {
+      "type": "json"
     }
   }
 }
